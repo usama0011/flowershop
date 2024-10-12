@@ -16,13 +16,12 @@ app.use(express.json());
 
 const corsOptions = {
   origin: function (origin, callback) {
-    if (
-      !origin ||
-      origin === "https://gregarious-toffee-87b977.netlify.app/#" ||
-      origin === "https://gregarious-toffee-87b977.netlify.app/login" ||
-      origin === "https://gregarious-toffee-87b977.netlify.app/register" ||
-      origin === "http://127.0.0.1:5500"
-    ) {
+    const allowedOrigins = [
+      "https://joyful-bombolone-1ac426.netlify.app", // Add your frontend URL
+      "http://127.0.0.1:5500", // Local development URL
+    ];
+
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
@@ -36,7 +35,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Handle OPTIONS requests for preflight checks
-app.options("*", cors(corsOptions)); // This allows preflight requests
+app.options("*", cors(corsOptions));
 
 // Routes
 app.use("/api/users", userRoutes);
