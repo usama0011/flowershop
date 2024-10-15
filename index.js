@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose"; // Import Mongoose for MongoDB connection
 import userRoutes from "./routes/userroute.js"; // Ensure to add .js extension in ES6
 import cartRoutes from "./routes/cartRoutes.js";
+import contactusRoute from "./routes/conatctusroute.js";
 import cors from "cors";
 import dotenv from "dotenv"; // Load environment variables
 
@@ -40,6 +41,7 @@ app.options("*", cors(corsOptions));
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/cart", cartRoutes);
+app.use("/api/contactus", contactusRoute);
 app.use("/", (req, res) => {
   res.status(200).send("Flowers Website Work Server");
 });
