@@ -18,7 +18,7 @@ app.use(express.json());
 const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = [
-      "https://elegant-babka-76a085.netlify.app", // Add your frontend URL
+      "https://serene-pixie-1a2813.netlify.app", // Add your frontend URL
       "http://127.0.0.1:5500", // Local development URL
     ];
 
